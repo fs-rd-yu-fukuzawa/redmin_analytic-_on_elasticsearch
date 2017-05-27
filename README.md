@@ -1,4 +1,4 @@
-# redmin_analytic_on_elasticsearch
+# redmin_analytics_on_elasticsearch
 
 
 ```

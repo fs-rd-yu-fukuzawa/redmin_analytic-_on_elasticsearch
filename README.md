@@ -1,0 +1,1 @@
+# redmin_analytic_on_elasticsearch

@@ -1,0 +1,293 @@
+{
+  "settings": {
+    "analysis": {
+      "filter": {
+        "pos_filter": {
+          "type": "kuromoji_part_of_speech",
+          "stoptags": [
+            "助詞-格助詞-一般",
+            "助詞-終助詞"
+          ]
+        },
+        "greek_lowercase_filter": {
+          "type": "lowercase",
+          "language": "greek"
+        }
+      },
+      "tokenizer": {
+        "kuromoji": {
+          "type": "kuromoji_tokenizer"
+        },
+        "ngram_tokenizer": {
+          "type": "nGram",
+          "min_gram": "2",
+          "max_gram": "3",
+          "token_chars": [
+            "letter",
+            "digit"
+          ]
+        }
+      },
+      "analyzer": {
+        "kuromoji_analyzer": {
+          "type": "custom",
+          "tokenizer": "kuromoji",
+          "filter": [
+            "kuromoji_baseform",
+            "pos_filter",
+            "greek_lowercase_filter",
+            "cjk_width"
+          ]
+        },
+				"ngram_analyzer": {
+          "tokenizer": "ngram_tokenizer"
+        }
+      }
+    }
+  },
+	"mappings": {
+    "restaurant": {
+      "_source": {
+        "enabled": true
+      },
+      "_all": {
+        "enabled": true,
+        "analyzer": "kuromoji_analyzer"
+      },
+			"properties": {
+        "#": {
+          "type": "long",
+          "index": "not_analyzed"
+        },
+        "プロジェクト": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "トラッカー": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "親チケット": {
+          "type": "long",
+          "index": "not_analyzed"
+        },
+        "ステータス": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "重要度": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "題名": {
+          "type": "text",
+          "index": "analyzed",
+          "analyzer": "ngram_analyzer"
+        },
+        "作成者": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "担当者": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "更新日": {
+          "type": "date",
+          "index": "not_analyzed"
+        },
+        "カテゴリ": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "対象バージョン": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "開始日": {
+          "type": "date",
+          "index": "not_analyzed"
+        },
+        "期日": {
+          "type": "date",
+          "index": "not_analyzed"
+        },
+        "予定工数": {
+          "type": "integer",
+          "index": "not_analyzed"
+        },
+        "合計予定工数": {
+          "type": "integer",
+          "index": "not_analyzed"
+        },
+        "作業時間": {
+          "type": "integer",
+          "index": "not_analyzed"
+        },
+        "合計作業時間": {
+          "type": "integer",
+          "index": "not_analyzed"
+        },
+        "進捗率": {
+          "type": "integer",
+          "index": "not_analyzed"
+        },
+        "作成日": {
+          "type": "date",
+          "index": "not_analyzed"
+        },
+        "終了日": {
+          "type": "date",
+          "index": "not_analyzed"
+        },
+        "関連するチケット": {
+          "type": "long",
+          "index": "not_analyzed"
+        },
+        "依頼区分": {
+          "type": "text",
+          "index": "analyzed",
+          "analyzer": "ngram_analyzer"
+        },
+        "SS/RD対応": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "起票者": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "起票者希望期日": {
+          "type": "date",
+          "index": "not_analyzed"
+        },
+        "実開始": {
+          "type": "date",
+          "index": "not_analyzed"
+        },
+        "実終了日": {
+          "type": "date",
+          "index": "not_analyzed"
+        },
+        "作業カテゴリ": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "クライアント名": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "チーム名": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "要望区分": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "承認": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "オペミスカテゴリ": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "発生日時": {
+          "type": "date",
+          "index": "not_analyzed"
+        },
+        "検知日時": {
+          "type": "date",
+          "index": "not_analyzed"
+        },
+        "事象解消日時": {
+          "type": "date",
+          "index": "not_analyzed"
+        },
+        "インシデント検知元": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "原因": {
+          "type": "text",
+          "index": "analyzed",
+          "analyzer": "ngram_analyzer"
+        },
+        "対応内容": {
+          "type": "text",
+          "index": "analyzed",
+          "analyzer": "ngram_analyzer"
+        },
+        "暫定対応": {
+          "type": "text",
+          "index": "analyzed",
+          "analyzer": "ngram_analyzer"
+        },
+        "経緯": {
+          "type": "text",
+          "index": "analyzed",
+          "analyzer": "ngram_analyzer"
+        },
+        "発生事象": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "顧客認識有無": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "欠陥分類": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "暫定対応区分": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "再現性の有無": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "恒久対応の有無": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "恒久対応内容": {
+          "type": "text",
+          "index": "analyzed",
+          "analyzer": "ngram_analyzer"
+        },
+        "恒久対応完了予定日": {
+          "type": "date",
+          "index": "not_analyzed"
+        },
+        "同類欠陥調査": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "同類欠陥調査結果": {
+          "type": "text",
+          "index": "analyzed",
+          "analyzer": "ngram_analyzer"
+        },
+        "調査依頼チケットNo.": {
+          "type": "long",
+          "index": "not_analyzed"
+        },
+        "問題管理チケットNo.": {
+          "type": "long",
+          "index": "not_analyzed"
+        },
+        "リスト追加テスト": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "プライベート": {
+          "type": "text",
+          "index": "not_analyzed"
+        }
+			}
+		}
+	}
+}

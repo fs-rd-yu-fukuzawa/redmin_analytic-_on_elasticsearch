@@ -2,5 +2,5 @@
 
 
 ```
-curl -XPOST localhost:9200/redmine_issues -d @schema.json
+curl -XPUT localhost:9200/redmine_issues -d @schema.json
 ```
